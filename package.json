@@ -1,0 +1,58 @@
+{
+  "name": "virtualitour-public",
+  "version": "0.0.1",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./node_modules/gulp/bin/gulp"
+  },
+  "dependencies": {
+    "angular": "1.4.7",
+    "angular-bootstrap-show-errors": "2.3.0",
+    "angular-file-upload": "2.2.0",
+    "angular-gravatar": "0.4.1",
+    "angular-messages": "1.4.7",
+    "angular-ui-bootstrap": "0.14.3",
+    "angular-ui-router": "0.2.15",
+    "body-parser": "1.14.1",
+    "bootstrap": "3.3.6",
+    "bower": "1.7.1",
+    "browserify-middleware": "7.0.0",
+    "clipboard": "1.5.8",
+    "cookie-parser": "1.4.0",
+    "express": "4.13.3",
+    "express-less": "0.0.8",
+    "express-session": "1.12.1",
+    "font-awesome": "4.5.0",
+    "google-maps": "3.1.0",
+    "gulp": "3.9.1",
+    "gulp-browserify": "0.5.1",
+    "gulp-install": "0.6.0",
+    "gulp-jade": "1.1.0",
+    "gulp-less": "3.0.5",
+    "gulp-mocha": "2.2.0",
+    "gulp-rename": "1.2.2",
+    "gulp-uglify": "1.5.3",
+    "jade": "1.11.0",
+    "jquery": "2.1.4",
+    "lightslider": "^1.1.5",
+    "lodash": "3.10.1",
+    "metismenu": "2.2.0",
+    "multer": "1.1.0",
+    "passport": "0.3.0",
+    "passport-local": "1.0.0",
+    "session": "0.1.0",
+    "startbootstrap-sb-admin-2 ": "1.0.7",
+    "superagent": "1.6.1",
+    "toastr": "2.1.2"
+  },
+  "config": {
+    "env": "develop",
+    "port": 8000,
+    "serveStatic": true,
+    "awsBucket": "https://s3-eu-west-1.amazonaws.com/virtualitour.files",
+    "api": {
+      "hostname": "http://localhost:3000",
+      "pathPrefix": "/api"
+    }
+  }
+}

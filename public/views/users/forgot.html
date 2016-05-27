@@ -1,0 +1,22 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 col-md-offset-4">
+      <div class="login-panel panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Recover account</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" name="form">
+            <fieldset>
+              <div class="form-group input-group"><span class="input-group-addon">@</span>
+                <input placeholder="Email" name="email" type="text" ng-model="email" required="required" class="form-control"/>
+              </div>
+              <button data-ng-click="forgot(form)" ng-disabled="form.$invalid || isLoading" class="btn btn-lg btn-primary btn-block">Send <i ng-show="isLoading" class="fa fa-cog fa-spin"></i></button><br/><a href="#" ui-sref="login" class="col-md-12 text-right">Login</a>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

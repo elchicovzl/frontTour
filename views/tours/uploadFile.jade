@@ -1,0 +1,19 @@
+div(class="row panel panel-default")
+    div(data-ng-repeat="file in files" class="nopadding col-md-2")
+        div(data-ng-click="delete(file)" class="pos-abs-top-right")
+            i(class="fa fa-times")
+        
+        div(ng-if="file.edit")
+            img(data-ngf-src="file.fileUrl || '/public/imgs/img'")
+
+        div(ng-if="!file.edit" class="iconUp" style="width:170px;")
+            div(class="progressss" data-ng-style="{height: file.progress + '%'}")
+            div(class="imageContent")        
+                span(ng-if="file.status == 'uploading'" class="fa fa-cloud-upload col-md-2 iconP textBlind")
+                    p(class="textBlind") Uploading...
+                img(ng-if="file.status == 'completed'" class="img-responsive" data-ngf-src="file || '/public/imgs/img'")
+
+    div(data-ngf-select="upload($file)" data-ngf-drop="upload($file)" data-ngf-max-size="20MB")
+        i(class="fa fa-cloud-upload iconUp col-md-2 iconP" style="width:170px;")
+            span(class="iconText") Upload
+

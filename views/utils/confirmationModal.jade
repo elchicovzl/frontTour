@@ -1,0 +1,33 @@
+div(class="modal-content")
+
+    div(class="modal-header")
+
+        button(type="button" class="close" data-ng-click="$close()")
+
+            span(aria-hidden="true")
+
+                i(class="fa fa-times-circle")
+
+            span(class="sr-only")
+
+                | Close
+
+        h4(class="modal-title")
+
+            i(class="fa fa-exclamation-circle")
+
+            | &nbsp; Confirmation
+
+    div(class="modal-body reveal")
+        p(data-ng-bind="message")
+        br
+
+    div(class="modal-footer")
+
+        button(type="button" class="btn btn-primary" data-ng-click="accept()")
+
+            | Accept
+
+        button(type="button" class="btn btn-default" data-ng-click="$close()")
+
+            | Cancel

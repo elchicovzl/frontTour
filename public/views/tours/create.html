@@ -1,0 +1,75 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 data-ng-bind="tour.id ? 'Edit tour' : 'Create tour'" class="page-header vt-title"></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6">
+              <form role="form" name="form" novalidate="novalidate">
+                <div show-errors="{ showSuccess: true }" class="form-group">
+                  <input type="text" placeholder="name" id="name" name="name" data-ng-model="tour.name" required="required" class="form-control"/>
+                  <div ng-messages="form.name.$error" data-ng-if="form.name.$touched || isFormSummitted" class="help-block"><p ng-message="required">name is required.</p></div>
+                </div>
+                <div show-errors="{ showSuccess: true }" class="form-group">
+                  <textarea row="4" placeholder="description" data-ng-model="tour.description" name="description" required="required" class="form-control"></textarea>
+                  <div ng-messages="form.description.$error" ng-if="form.description.$touched || isFormSummitted" class="help-block"><p ng-message="required">description is required.</p></div>
+                </div>
+                <div class="form-group col-md-6">
+                  <select id="location" class="form-control">
+                    <option>Location</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <select id="type" class="form-control">
+                    <option>Type</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div data-ng-if="!tour.id" class="col-lg-12">
+      <h2 class="page-header vt-title">Photospheres</h2>
+      <div data-upload-file="data-upload-file" folder="tours" type="panos" data-model="panos"></div>
+    </div>
+    <div data-ng-if="tour.id" class="col-lg-12">
+      <h2 class="page-header vt-title">Photospheres edit</h2>
+      <div data-show-file="data-show-file" folder="tours" type="panos" data-model="panos"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div data-ng-if="!tour.id" class="col-lg-12">
+      <h2 class="page-header vt-title">Floorplans</h2>
+      <div data-upload-file="data-upload-file" folder="tours" data-model="floorplans"></div>
+    </div>
+    <div data-ng-if="tour.id" class="col-lg-12">
+      <h2 class="page-header vt-title">Floorplans edit</h2>
+      <div data-show-file="data-show-file" folder="tours" data-model="floorplans"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div data-ng-if="!tour.id" class="col-lg-12">
+      <h2 class="page-header vt-title">Images</h2>
+      <div data-upload-file="data-upload-file" folder="tours" data-model="images"></div>
+    </div>
+    <div data-ng-if="tour.id" class="col-lg-12">
+      <h2 class="page-header vt-title">Images edit</h2>
+      <div data-show-file="data-show-file" folder="tours" data-model="images"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <button type="button" ng-click="createTour(form)" ng-disabled="form.$invalid || isLoading" class="btn btn-warning">{{tour.id ? 'Edit' : 'Create'}} Tour  <i ng-show="isLoading" class="fa fa-cog fa-spin"> </i><span ng-show="isLoading" class="textBlind">File uploading!</span></button><br/><br/>
+    </div>
+  </div>
+</div>

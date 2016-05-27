@@ -1,0 +1,91 @@
+div(class="container-fluid")
+	div(class="row")
+		div(class="col-lg-12")
+			h2(class="page-header vt-title") Profile
+
+		div(class="row")
+			div(class="spinner tour" data-ng-hide="isDataLoaded")
+			
+			div(class="panel")
+				div(class="panel-heading")
+					h3(class="panel-title")
+				div(class="panel-body")
+					div(class="row")
+						div(class="col-md-3 col-lg-3" align="center")
+							div(class="profile-userpic")
+								div(data-upload-file data-model="avatar" folder="users")
+							div(class="profile-usertitle")
+								{{profile.name + ' ' + profile.lastName}}
+						div(class="col-md-9 col-lg-9")
+							form(role='form' class="form" name="form" novalidate)
+								table(class="table table-user-information")
+									tbody
+										tr
+											td Name:
+											td(ng-hide="edit" ng-mousedown="editMode();") {{profile.name}}
+											td(ng-show="edit")
+												input(class="form-control" placeholder='Name', name='name', type='text', data-ng-model='profile.name')
+												div(class="help-block", ng-messages="form.name.$error", ng-if="form.name.$touched || isFormSummitted")
+													p(ng-message="required") name is required
+										tr
+											td Last Name:
+											td(ng-hide="edit" ng-mousedown="editMode();") {{profile.lastName}}
+											td(ng-show="edit")
+												input(class="form-control" placeholder='Last name', name='lastname', type='text', data-ng-model='profile.lastName')
+												div(class="help-block", ng-messages="form.lastname.$error", ng-if="form.lastname.$touched || isFormSummitted")
+													p(ng-message="required") Last Name is required.
+										tr
+											td Username:
+											td(ng-hide="edit" ng-mousedown="editMode();") {{profile.userName}}
+											td(ng-show="edit")
+												input(class="form-control" placeholder='Username', name='username', type='text', data-ng-model='profile.userName', required)
+												div(class="help-block", ng-messages="form.username.$error", ng-if="form.username.$touched || isFormSummitted")
+													p(ng-message="required") username is required.
+										tr
+											td Email:
+											td(ng-hide="edit" ng-mousedown="editMode();") {{profile.email}}
+											td(ng-show="edit")
+												input(class="col-md-4 form-control " placeholder='Email', name='email', type='text', data-ng-model='profile.email', required)
+												div(class="help-block", ng-messages="form.email.$error", ng-if="form.email.$touched || isFormSummitted")
+													p(ng-message="required") email is required.
+
+							a(href="#" class="btn btn-primary" ng-click="flagPass = true;") Change Password
+							a(href="#" class="btn btn-warning pull-right" data-ng-show="edit" style="margin-left:10px;" data-ng-click="edit = false;") Cancel
+							a(href="#" class="btn btn-primary pull-right" data-ng-click="updateUser(form)" data-ng-show="edit" data-ng-disabled="form.$invalid || isLoading") Update
+								i(class="fa fa-cog fa-spin", ng-show="isLoading")
+						
+							div(class="row" class="profile-password")
+								form(role='form2' class="form" name="form2" novalidate)
+									div(class="row" ng-if="flagPass")
+										div(class="panel panel-default col-md-7 change-password")
+													div(class="row")
+														div(class="form-group", show-errors="{ showSuccess: true }")
+															label(class="col-xs-4") Current Password:
+															div(class="col-md-8")
+																input(class="col-md-4 form-control ", name='cpassword', type='password', data-ng-model='passwd.cPassword', required)
+																div(class="help-block", ng-messages="form2.cpassword.$error", ng-if="form2.cpassword.$touched || isFormSummitted")
+																	<p ng-message="required">Current password is required.</p>
+													br
+													div(class="row")
+														div(class="form-group", show-errors="{ showSuccess: true }")
+															label(class="col-xs-4") New Password:
+															div(class="col-md-8")
+																input(class="col-md-4 form-control ", name='npassword', type='password', data-ng-model='passwd.nPassword', required)
+																div(class="help-block", ng-messages="form2.npassword.$error", ng-if="form2.npassword.$touched || isFormSummitted || form2.cpassword.$touched")
+																	<p ng-message="required">New password is required.</p>
+													br
+													div(class="row")
+														div(class="form-group", show-errors="{ showSuccess: true }")
+															label(class="col-xs-4") Confirm Password:
+															div(class="col-md-8")
+																input(class="col-md-4 form-control ", name='rpassword', type='password', data-ng-model='passwd.rPassword', match-password="npassword", required)
+																div(class="help-block", ng-messages="form2.rpassword.$error", ng-if="form2.rpassword.$touched || isFormSummitted")
+																	p(ng-message="required") Confirm password is required
+																	p(ng-message="passwordMatch") Passwords not matchs
+													br
+													div(class="row" )
+														div(class="col-md-2 pull-right")
+															a(data-ng-click="changePasswordOf()" class="btn btn-warning") Cancel
+														div(class="col-md-2 pull-right")
+															a(type="button" data-ng-click="updatePassword(form2)" class="btn btn-primary" ng-disabled="form2.$invalid || isLoading") Update
+																i(class="fa fa-cog fa-spin", ng-show="isLoading")

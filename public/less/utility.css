@@ -1,0 +1,33 @@
+.light-border {
+  border: 3px solid #ccc;
+}
+.dotted-border {
+  border: 3px dashed black;
+}
+.center {
+  position: relative;
+  margin: auto auto;
+}
+.height-all {
+  height: 100%;
+}
+.pos-abs-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  z-index: 999;
+}
+.spinner {
+  background-image: url(/public/imgs/spinner.gif);
+  background-repeat: no-repeat;
+  width: 96px;
+  height: 96px;
+  margin: 40px auto;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}

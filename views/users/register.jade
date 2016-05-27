@@ -1,0 +1,50 @@
+div(class="container")
+    div(class="row")
+        div(class="col-md-5 col-md-offset-4")
+            div(class="login-panel panel panel-default")
+                div(class="panel-heading")
+                    h3(class="panel-title")
+                        | Registration
+
+                div(class="panel-body")
+                    form(role='form' name="form" novalidate)
+                        fieldset
+                            div(class="form-group", show-errors="{ showSuccess: true }") 
+                                input(class="form-control" placeholder='Username', name='username', type='text', 
+                                      data-ng-model='user.userName', required)
+                                div(class="help-block", ng-messages="form.username.$error", 
+                                    ng-if="form.username.$touched || isFormSummitted")
+                                    <p ng-message="required">username is required.</p>
+
+                            div(class="form-group", show-errors="{ showSuccess: true }")
+                                input(class="form-control" placeholder='Email', name='email', type='email', 
+                                      data-ng-model='user.email', required)
+                                div(class="help-block", ng-messages="form.email.$error", 
+                                    ng-if="form.email.$touched || isFormSummitted")
+                                    <p ng-message="required">email is required.</p>
+                                    <p ng-message="email">Your email address is invalid.</p>
+
+
+                            div(class="form-group", show-errors="{ showSuccess: true }")
+                                input(class="form-control" placeholder='Password', name='password', type='password', 
+                                      data-ng-model='user.password', required)
+                                div(class="help-block", ng-messages="form.password.$error", 
+                                    ng-if="form.password.$touched || isFormSummitted")
+                                    p(ng-message="required") Password is required 
+
+                            div(class="form-group", show-errors="{ showSuccess: true }")
+                                input(class="form-control" placeholder='Password confirmation', name='rePassword', 
+                                      type='password', data-ng-model='user.rePassword', match-password="password", required)
+                                div(class="help-block", ng-messages="form.rePassword.$error", 
+                                    ng-if="form.rePassword.$touched || isFormSummitted ")
+                                    p(ng-message="required") Password confirmation is required
+                                    p(ng-message="passwordMatch") Passwords not matchs
+
+
+                            button(class="btn btn-lg btn-primary btn-block" data-ng-click='register(form)', 
+                                   ng-disabled="form.$invalid || isLoading")
+                                | Register 
+                                i(class="fa fa-cog fa-spin", ng-show="isLoading")
+
+                            br    
+                            a(href="#", ui-sref="login", class="col-md-12 text-right") Login

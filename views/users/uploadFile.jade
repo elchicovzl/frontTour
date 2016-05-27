@@ -1,0 +1,13 @@
+div(data-ng-click="delete(files[0])" class="pos-abs-top-right-user" ng-if="files[0]")
+		i(class="fa fa-times")
+div(class="profile-userpic" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()")
+	img(ngf-src="!files[0].$error && files[0] ||  $parent.url+$parent.profile.avatar  || 'public/imgs/default_user_cover.png'" data-ngf-select="upload($file)" data-ngf-drop="upload($file)" data-ngf-max-size="20MB")
+
+	div(class="upload-progress-user" ng-if="files[0]")
+		div(class="row")
+			div(class="progress-box-user light-border col-md-10")
+				div(class="progress-bar-user" data-ng-style="{width: files[0].progress + '%'}")
+
+			i(class="fa col-md-2" data-ng-class="{'fa-check'   : files[0].status === 'completed',\
+	                                                                'fa-spin'    : files[0].status === 'uploading',\
+	                                                                'fa-spinner' : files[0].status === 'uploading'}")

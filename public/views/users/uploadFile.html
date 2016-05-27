@@ -1,0 +1,13 @@
+
+<div data-ng-click="delete(files[0])" ng-if="files[0]" class="pos-abs-top-right-user"><i class="fa fa-times"></i></div>
+<div ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" class="profile-img col-md-3">
+  <div class="container-img2"><img ngf-src="!files[0].$error &amp;&amp; files[0] || $parent.profile.avatar" style="max-width:100%;"/></div>
+  <div data-ng-show="hoverChange" class="changeImg"><a href="#" data-ngf-select="upload($file)" data-ngf-drop="upload($file)" data-ngf-max-size="20MB">change </a></div>
+  <div ng-if="files[0]" class="upload-progress-user">
+    <div class="row">
+      <div class="progress-box-user light-border col-md-10">
+        <div data-ng-style="{width: files[0].progress + '%'}" class="progress-bar-user"></div>
+      </div><i data-ng-class="{'fa-check'   : files[0].status === 'completed',	                                                                'fa-spin'    : files[0].status === 'uploading',	                                                                'fa-spinner' : files[0].status === 'uploading'}" class="fa col-md-2"></i>
+    </div>
+  </div>
+</div>

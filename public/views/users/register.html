@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 col-md-offset-4">
+      <div class="login-panel panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Registration</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" name="form" novalidate="novalidate">
+            <fieldset>
+              <div show-errors="{ showSuccess: true }" class="form-group"> 
+                <input placeholder="Username" name="username" type="text" data-ng-model="user.userName" required="required" class="form-control"/>
+                <div ng-messages="form.username.$error" ng-if="form.username.$touched || isFormSummitted" class="help-block"><p ng-message="required">username is required.</p></div>
+              </div>
+              <div show-errors="{ showSuccess: true }" class="form-group">
+                <input placeholder="Email" name="email" type="email" data-ng-model="user.email" required="required" class="form-control"/>
+                <div ng-messages="form.email.$error" ng-if="form.email.$touched || isFormSummitted" class="help-block">
+                  <p ng-message="required">email is required.</p>
+                  <p ng-message="email">Your email address is invalid.</p>
+                </div>
+              </div>
+              <div show-errors="{ showSuccess: true }" class="form-group">
+                <input placeholder="Password" name="password" type="password" data-ng-model="user.password" required="required" class="form-control"/>
+                <div ng-messages="form.password.$error" ng-if="form.password.$touched || isFormSummitted" class="help-block">
+                  <p ng-message="required">Password is required </p>
+                </div>
+              </div>
+              <div show-errors="{ showSuccess: true }" class="form-group">
+                <input placeholder="Password confirmation" name="rePassword" type="password" data-ng-model="user.rePassword" match-password="password" required="required" class="form-control"/>
+                <div ng-messages="form.rePassword.$error" ng-if="form.rePassword.$touched || isFormSummitted " class="help-block">
+                  <p ng-message="required">Password confirmation is required</p>
+                  <p ng-message="passwordMatch">Passwords not matchs</p>
+                </div>
+              </div>
+              <button data-ng-click="register(form)" ng-disabled="form.$invalid || isLoading" class="btn btn-lg btn-primary btn-block">Register <i ng-show="isLoading" class="fa fa-cog fa-spin"></i></button><br/><a href="#" ui-sref="login" class="col-md-12 text-right">Login</a>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

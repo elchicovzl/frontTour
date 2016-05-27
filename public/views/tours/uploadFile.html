@@ -1,0 +1,13 @@
+
+<div class="row panel panel-default">
+  <div data-ng-repeat="file in files" class="nopadding col-md-2">
+    <div data-ng-click="delete(file)" class="pos-abs-top-right"><i class="fa fa-times"></i></div>
+    <div ng-if="file.edit"><img data-ngf-src="file.fileUrl || '/public/imgs/img'"/></div>
+    <div ng-if="!file.edit" style="width:170px;" class="iconUp">
+      <div data-ng-style="{height: file.progress + '%'}" class="progressss"></div>
+      <div class="imageContent">       <span ng-if="file.status == 'uploading'" class="fa fa-cloud-upload col-md-2 iconP textBlind">
+          <p class="textBlind">Uploading...</p></span><img ng-if="file.status == 'completed'" data-ngf-src="file || '/public/imgs/img'" class="img-responsive"/></div>
+    </div>
+  </div>
+  <div data-ngf-select="upload($file)" data-ngf-drop="upload($file)" data-ngf-max-size="20MB"><i style="width:170px;" class="fa fa-cloud-upload iconUp col-md-2 iconP"><span class="iconText">Upload</span></i></div>
+</div>

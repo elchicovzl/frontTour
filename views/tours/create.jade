@@ -1,0 +1,66 @@
+div(class="container-fluid")
+    div(class="row")
+        div(class="col-lg-12")
+            h2(class="page-header vt-title" data-ng-bind="tour.id ? 'Edit tour' : 'Create tour'")
+
+    div(class="row")
+        div(class="col-lg-12")
+            div(class="panel panel-default")
+                div(class="panel-body")
+                    div(class="row")
+                        div(class="col-md-6")
+                            form(role="form" name="form" novalidate)
+                                div(class="form-group", show-errors="{ showSuccess: true }")
+                                    input(class="form-control", type="text" , placeholder="name", id="name",
+                                        name="name", data-ng-model='tour.name', required)
+                                    div(class="help-block", ng-messages="form.name.$error",
+                                        data-ng-if="form.name.$touched || isFormSummitted")
+                                        <p ng-message="required">name is required.</p>
+                                div(class="form-group", show-errors="{ showSuccess: true }")
+                                    textarea(class="form-control", row="4", placeholder="description",
+                                    data-ng-model='tour.description', name="description" required)
+                                    div(class="help-block", ng-messages="form.description.$error",
+                                    ng-if="form.description.$touched || isFormSummitted")
+                                        <p ng-message="required">description is required.</p>
+                                div(class="form-group col-md-6")
+                                    select(id="location", class="form-control")
+                                        option Location
+                                div(class="form-group col-md-6")
+                                    select(id="type", class="form-control")
+                                        option Type
+
+    div(class="row")
+        div(class="col-lg-12" data-ng-if="!tour.id")
+            h2(class="page-header vt-title") Photospheres
+            div(data-upload-file folder="tours" type="panos" data-model="panos")
+        div(class="col-lg-12" data-ng-if="tour.id")
+            h2(class="page-header vt-title") Photospheres edit
+            div(data-show-file folder="tours" type="panos" data-model="panos")
+
+    div(class="row")
+        div(class="col-lg-12" data-ng-if="!tour.id")
+            h2(class="page-header vt-title") Floorplans
+            div(data-upload-file folder="tours"  data-model="floorplans")
+        div(class="col-lg-12" data-ng-if="tour.id")
+            h2(class="page-header vt-title") Floorplans edit
+            div(data-show-file folder="tours"  data-model="floorplans")
+
+    div(class="row")
+        div(class="col-lg-12" data-ng-if="!tour.id")
+            h2(class="page-header vt-title") Images
+            div(data-upload-file folder="tours"  data-model="images")
+        div(class="col-lg-12" data-ng-if="tour.id")
+            h2(class="page-header vt-title") Images edit
+            div(data-show-file folder="tours" data-model="images")
+
+    div(class="row")
+        div(class="col-lg-12")
+            button(type="button", class="btn btn-warning", ng-click="createTour(form)",
+                   ng-disabled="form.$invalid || isLoading")
+                | {{tour.id ? 'Edit' : 'Create'}} Tour  
+                i(class="fa fa-cog fa-spin", ng-show="isLoading") 
+                span(class="textBlind" ng-show="isLoading") File uploading!
+            br
+            br
+
+

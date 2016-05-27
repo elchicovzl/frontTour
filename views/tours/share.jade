@@ -1,0 +1,9 @@
+div(class="container-fluid")
+	div(class="row" ng-if="getTour" ng-hide="loadedTour")
+		div(class="progress")
+			div(class="progress-bar progress-bar-default" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"  ng-model="tour" data-uploader-tour) 
+				span  Loading tour...		
+	div(class="row" ng-show="loadedTour")
+		div(class="col-lg-12 shareViewTour" id="view-canvas")
+		div(class="row" data-ng-show="tour.floorplan[0].status")
+			img(class="view-floorplan-share", id="floorplan" , alt="Floorplan"  populate-fp)

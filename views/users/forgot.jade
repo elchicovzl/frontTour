@@ -1,0 +1,18 @@
+div(class="container")
+	div(class="row")
+		div(class="col-md-5 col-md-offset-4")
+			div(class="login-panel panel panel-default")
+				div(class="panel-heading")
+					h3(class="panel-title")
+						| Recover account
+				div(class="panel-body")
+					form(role='form' name="form")
+						fieldset
+							div(class="form-group input-group")
+								span(class="input-group-addon") @
+								input(class="form-control" placeholder='Email', name='email', type='text', ng-model='email' required)
+							button(class="btn btn-lg btn-primary btn-block" data-ng-click='forgot(form)', ng-disabled="form.$invalid || isLoading")
+								| Send 
+								i(class="fa fa-cog fa-spin", ng-show="isLoading")
+							br    
+							a(href="#", ui-sref="login", class="col-md-12 text-right") Login

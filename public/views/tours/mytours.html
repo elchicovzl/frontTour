@@ -1,0 +1,50 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-header vt-title">My tours</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-group col-md-3 custom-search-form pull-right">
+      <input type="text" placeholder="Search..." class="form-control"/><span class="input-group-btn">
+        <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button></span>
+    </div>
+    <div class="form-group col-md-2 pull-right">
+      <select id="location" class="form-control">
+        <option>Location</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2 pull-right">
+      <select id="type" class="form-control">
+        <option>Type</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div data-ng-hide="isDataLoaded" class="spinner tour"></div>
+    <div data-ng-repeat="tour in tours" data-ng-show="isDataLoaded" class="col-md-2 tour light-border">
+      <div class="tour-header">
+        <h4>{{::tour.name}}
+          <div class="dropdown pull-right pos-abs-top-right">
+            <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle"><i class="fa fa-list-ul"></i></button>
+            <ul class="dropdown-menu">
+              <li><a data-ui-sref="home.editTour({id: tour.id})" class="dropdown-item"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit</a></li>
+              <li><a ui-sref="home.linkTour({ id: tour.id })" class="dropdown-item"><i class="fa fa-link"></i>&nbsp; Link Tour</a></li>
+              <li><a data-clipboard-text="{{hostname}}/share/{{tour.id}}" href="#" ng-click="clipboard()" class="dropdown-item sharess"><i class="fa fa-share-alt"></i>&nbsp; Share</a></li>
+              <li data-confirmation-modal="data-confirmation-modal" action="deleteTour(tour)"><a href="#" class="dropdown-item"><i class="fa fa-times"></i>&nbsp; Delete</a></li>
+            </ul>
+          </div>
+          <div class="container-img"><img loading-img="loading-img"/></div>
+        </h4>
+      </div>
+      <div class="tour-content">{{::tour.description}}</div><br/>
+      <div class="tour-content"><a data-ui-sref="home.viewTour({id: tour.id})" class="btn btn-primary btn-block"><i class="fa fa-eye"> View Tour</i></a></div>
+    </div>
+  </div>
+  <div data-ng-show="isDataLoaded &amp;&amp; tours.length === 0" class="row">
+    <div class="col-lg-12">
+      <div class="well">There is any tours available yet</div>
+    </div>
+  </div>
+</div>

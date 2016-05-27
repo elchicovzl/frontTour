@@ -1,0 +1,112 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-header vt-title">Profile</h2>
+    </div>
+    <div class="row">
+      <div data-ng-hide="isDataLoaded" class="spinner tour"></div>
+      <div data-ng-show="isDataLoaded" class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="profile-content">
+            <div class="row">
+              <div data-upload-file="data-upload-file" data-model="avatar" folder="users"></div>
+            </div>
+            <div class="profile-data">
+              <form role="form" name="form" novalidate="novalidate" class="form">
+                <div class="row">
+                  <div show-errors="{ showSuccess: true }" class="form-group">
+                    <label class="col-xs-2">Name:</label>
+                    <div class="col-md-4"> 
+                      <input placeholder="Name" name="name" type="text" data-ng-model="profile.name" class="form-control"/>
+                      <div ng-messages="form.name.$error" ng-if="form.name.$touched || isFormSummitted" class="help-block"><p ng-message="required">name is required.</p></div>
+                    </div>
+                  </div>
+                </div><br/>
+                <div class="row">
+                  <div show-errors="{ showSuccess: true }" class="form-group">
+                    <label class="col-xs-2">Last Name:</label>
+                    <div class="col-md-4"> 
+                      <input placeholder="Last name" name="lastname" type="text" data-ng-model="profile.lastName" class="form-control"/>
+                      <div ng-messages="form.lastname.$error" ng-if="form.lastname.$touched || isFormSummitted" class="help-block"><p ng-message="required">Last Name is required.</p></div>
+                    </div>
+                  </div>
+                </div><br/>
+                <div class="row">
+                  <div show-errors="{ showSuccess: true }" class="form-group">
+                    <label class="col-xs-2">Username:</label>
+                    <div class="col-md-4"> 
+                      <input placeholder="Username" name="username" type="text" data-ng-model="profile.userName" required="required" class="form-control"/>
+                      <div ng-messages="form.username.$error" ng-if="form.username.$touched || isFormSummitted" class="help-block"><p ng-message="required">username is required.</p></div>
+                    </div>
+                  </div>
+                </div><br/>
+                <div class="row">
+                  <div show-errors="{ showSuccess: true }" class="form-group">
+                    <label class="col-xs-2">Email:</label>
+                    <div class="col-md-4">
+                      <input placeholder="Email" name="email" type="text" data-ng-model="profile.email" required="required" class="col-md-4 form-control "/>
+                      <div ng-messages="form.email.$error" ng-if="form.email.$touched || isFormSummitted" class="help-block"><p ng-message="required">email is required.</p></div>
+                    </div>
+                  </div>
+                </div><br/>
+                <div class="row">
+                  <div class="col-lg-2">
+                    <button type="button" class="btn btn-block vt-color-white">Reset</button>
+                  </div>
+                  <div class="col-lg-2">
+                    <button type="button" data-ng-click="updateUser(form)" data-ng-disabled="form.$invalid || isLoading" class="btn btn-block vt-step2-btn vt-color-white">Save <i ng-show="isLoading" class="fa fa-cog fa-spin"></i></button>
+                  </div>
+                  <div class="col-lg-2">
+                    <button type="button" class="btn btn-block vt-step2-btn vt-color-white">Delete</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="row profile-password"><a href="#" ng-click="changePasswordOn()">Change Password
+                <form role="form2" name="form2" novalidate="novalidate" class="form">
+                  <div ng-if="flagPass" class="row">
+                    <div class="panel panel-default col-md-6 change-password">
+                      <div class="row">
+                        <div show-errors="{ showSuccess: true }" class="form-group">
+                          <label class="col-xs-4">Current Password:</label>
+                          <div class="col-md-8">
+                            <input name="cpassword" type="password" data-ng-model="passwd.cPassword" required="required" class="col-md-4 form-control "/>
+                            <div ng-messages="form2.cpassword.$error" ng-if="form2.cpassword.$touched || isFormSummitted" class="help-block"><p ng-message="required">Current password is required.</p></div>
+                          </div>
+                        </div>
+                      </div><br/>
+                      <div class="row">
+                        <div show-errors="{ showSuccess: true }" class="form-group">
+                          <label class="col-xs-4">New Password:</label>
+                          <div class="col-md-8">
+                            <input name="npassword" type="password" data-ng-model="passwd.nPassword" required="required" class="col-md-4 form-control "/>
+                            <div ng-messages="form2.npassword.$error" ng-if="form2.npassword.$touched || isFormSummitted || form2.cpassword.$touched" class="help-block"><p ng-message="required">New password is required.</p></div>
+                          </div>
+                        </div>
+                      </div><br/>
+                      <div class="row">
+                        <div show-errors="{ showSuccess: true }" class="form-group">
+                          <label class="col-xs-4">Confirm Password:</label>
+                          <div class="col-md-8">
+                            <input name="rpassword" type="password" data-ng-model="passwd.rPassword" match-password="npassword" required="required" class="col-md-4 form-control "/>
+                            <div ng-messages="form2.rpassword.$error" ng-if="form2.rpassword.$touched || isFormSummitted" class="help-block">
+                              <p ng-message="required">Confirm password is required</p>
+                              <p ng-message="passwordMatch">Passwords not matchs</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div><br/>
+                      <div class="row">
+                        <div class="col-lg-2 pull-right"><a data-ng-click="changePasswordOf()" class="btn btn-default">Cancel</a></div>
+                        <div class="col-lg-2 pull-right"><a type="button" data-ng-click="updatePassword(form2)" ng-disabled="form2.$invalid || isLoading" class="btn btn-block vt-step2-btn vt-color-white">Update					</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </form></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

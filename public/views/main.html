@@ -1,0 +1,40 @@
+
+<header class="header">
+  <div role="navigation" style="margin-bottom:0" class="nav navbar navbar-default navbar-static-top">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand"><img src="/public/imgs/logoVT.png" class="img-responsive2"/><span class="vtLogo">VIRTUALITOUR	</span></a>
+    </div>
+    <ul class="nav navbar-top-links navbar-right">
+      <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-lg"></i><span class="badge badge-notify">3</span></a></li>
+      <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-lg"></i><span class="badge badge-notify">3</span></a></li>
+      <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><span class="chat-img pull-left"><img gravatar-src="user.email" gravatar-size="25" alt="User Avatar" class="img-circle"/></span>&nbsp; Hi, {{::user.name | capitalize}}</a>
+        <ul class="dropdown-menu dropdown-user">
+          <li><a href="#" ui-sref="home.profile({id:user.id})"><i class="fa fa-user fa-fw"></i>User Profile</a></li>
+          <li><a href="#" ui-sref="home.settings"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
+          <li class="divider"></li>
+          <li><a ui-sref="logout"><i class="fa fa-sign-out fa-fw"></i>Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</header>
+<main class="main nopadding">
+  <div class="col-md-2 nopadding theside">
+    <div role="navigation" class="navbar-default sidebar nopadding">
+      <div class="sidebar-nav navbar-collapse">
+        <ul id="side-menu" class="nav">
+          <li><a href="#" ui-sref="home.overview"><i class="fa fa-dashboard fa-fw"></i> Home</a></li>
+          <li><a href="#" ui-sref="home.myTours" data-toggle="collapse" data-parent="#side-menu" data-target="#tour"><i class="fa fa-map-marker fa-fw"></i> My Tour<span class="fa arrow"></span></a>
+            <ul id="tour" class="nav collapse">
+              <li><a href="#" ui-sref="home.createTour">Create tour</a></li>
+            </ul>
+          </li>
+          <li><a href="#" ui-sref="home.images"><i class="fa fa-picture-o fa-fw"></i> Images</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10 content">
+    <div ui-view=""></div>
+  </div>
+</main>

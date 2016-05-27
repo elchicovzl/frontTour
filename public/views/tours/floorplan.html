@@ -1,0 +1,66 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-header vt-title">Floorplan</h2>
+    </div>
+  </div>
+  <div data-ng-hide="isDataLoaded" class="col-lg-4 col-md-offset-4"><br/><i class="fa fa-spin fa-circle-o-notch fa-4x"></i></div>
+  <div style="min-height:400px;" ng-hide="notFp" class="row vt-box">
+    <div class="col-lg-6 container-img"><img id="floorplan" data-ng-mousedown="getCordinate($event)" alt="Floorplan" style="border:1px solid;" loading-img="loading-img" typeImage="floorplan" class="img-responsive"/></div>
+    <div class="col-lg-6">
+      <div data-ng-show="camSelect" class="panel panel-info">
+        <div class="panel-heading">Camera Link {{idLink}}</div>
+        <div class="panel-body">
+          <div class="row">
+            <select data-ng-model="pano" data-ng-options="pano.name for pano in panos | filter: {link:true} " class="form-control vt-step-select">
+              <option value="">Select a link</option>
+            </select><br/>
+            <div class="row">
+              <div class="col-lg-6">
+                <button type="button" data-ng-click="saveLink(idLink)" class="btn btn-default">save</button>&nbsp;
+                <button type="button" data-ng-click="cancelLink()" class="btn btn-danger">cancel</button>&nbsp;
+                <button type="button" data-ng-click="deleteLink(idLink)" class="btn btn-default">delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-ng-show="editCamSelect" class="panel panel-info">
+        <div class="panel-heading">Camera Link {{dataEdit.idLink}}</div>
+        <div class="panel-body">
+          <div class="row">
+            <p>Pano id: {{dataEdit.pano}}</p>
+            <p>Pano name: {{dataEdit.panoName}}</p><br/>
+            <div class="row">
+              <div class="col-lg-4">
+                <button type="button" data-ng-click="removeLink(idLink)" class="btn btn-default">remove</button>&nbsp;
+                <button type="button" data-ng-click="cancelLink()" class="btn btn-danger">cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="min-height:400px;" ng-show="notFp" class="row vt-box">
+    <p>Not Floorplan created.</p>
+  </div><br/>
+  <div class="row">
+    <div class="col-lg-4">
+      <label>Choose visibility of floorplan</label><br/>
+      <label class="radio-inline">
+        <input type="radio" name="statusFp" id="statusOn" data-ng-model="status" value="1"/>Active
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="statusFp" id="statusOf" data-ng-model="status" value="0"/>Inactive
+      </label>
+    </div>
+  </div><br/><br/>
+  <div class="row">
+    <div class="col-lg-4">
+      <button type="button" data-ng-click="create(idLink)" class="btn btn-default">Create <i ng-show="isLoading" class="fa fa-cog fa-spin"></i></button>&nbsp;
+      <button type="button" data-ng-click="cancelLink()" class="btn btn-danger">cancel</button>
+    </div>
+  </div>
+</div>

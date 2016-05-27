@@ -1,0 +1,38 @@
+
+div
+    div(class="container")
+        div(class="row")
+            div(class="col-md-5 col-md-offset-4")
+                div(class="login-panel panel panel-default")
+                    div(class="panel-heading")
+                        h3(class="panel-title")
+                            | Please Sign In
+
+                    div(class="panel-body")
+                        form(role='form' name="form")
+                            fieldset
+                                div(class="form-group")
+                                    input(class="form-control" placeholder='Username', name='username', type='text',
+                                          ng-model='user.username' required)
+
+                                div(class="form-group")
+                                    input(class="form-control" placeholder='Password', name='password', type='password',
+                                          data-ng-model='user.password' required)
+
+                                div(class="checkbox")
+                                    label
+                                        input(name="remember", type="checkbox", data-ng-model="user.isSessionPersistent")
+                                        | Remember me
+
+                                button(class="btn btn-lg btn-primary btn-block" data-ng-disabled="isLoading"
+                                       data-ng-click='login(form)')
+                                    | Login &nbsp;
+                                    i(class="fa fa-refresh" data-ng-class="{'fa-spin': isLoading}" )
+
+
+
+                                br
+                                a(href="#", ui-sref="forgot" class="col-md-6") Forgot your password?
+                                a(href="#", ui-sref="register", class="col-md-6 text-right") Register
+
+
